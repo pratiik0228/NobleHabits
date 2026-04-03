@@ -1,374 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NobleHabits - Build Discipline, One Habit at a Time</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+Create a **professional, premium-quality single-page self-improvement website** called "NobleHabits". Generate **full HTML, CSS, and JS code in a single file** that is **ready for GitHub Pages**, fully functional, mobile-friendly, and visually polished. No errors, no blank screens, fully tested smooth scroll, and perfect navigation.
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: #333;
-            background: #f8f9fa;
-        }
+**Requirements:**
 
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
+1. **Header & Navigation**
+   - Fixed top navigation with links: Home, Discipline, Early Rising, Clean Spaces, Daily Goals, Good Habits.
+   - Mobile-responsive hamburger menu that works flawlessly.
+   - Smooth scrolling to each section.
+   - Active link highlighting when scrolling.
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+2. **Hero Section**
+   - Big heading: "Build Noble Habits"
+   - Subheading: "Transform your life through discipline, early rising, clean spaces, and consistent daily goals. Small changes, massive results."
+   - High-contrast, visually appealing CTA button: "Start Your Journey" scrolls to Discipline section.
+   - Hero background: subtle gradient or minimal visual cue for premium feel.
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            text-decoration: none;
-        }
+3. **Main Sections** (all sections styled consistently)
+   For each section, include:  
+   - Introduction (2-4 engaging lines)  
+   - Detailed, relatable explanation  
+   - 2-3 real-life examples  
+   - 4-6 practical step-by-step tips in bullet points  
+   - 1-2 motivating daily tips  
+   - Short 1-2 line conclusion  
+   - Optional relevant icon/visual (e.g., sunrise for early rising, broom for clean spaces)  
+   Sections and IDs:  
+   - Discipline in Daily Life (`id="discipline"`)  
+   - Waking Up Early (`id="early-rising"`)  
+   - Keeping Surroundings Clean (`id="clean-spaces"`)  
+   - Setting Daily Goals (`id="daily-goals"`)  
+   - Building Good Habits and Manners (`id="good-habits"`)
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+4. **Styling**
+   - Modern, minimal, premium design  
+   - Off-white/black & white theme with 1-2 accent colors  
+   - Max 2 clean, professional fonts  
+   - Proper spacing, padding, margins for a high-end look  
+   - Subtle section separators or shadows for premium feel  
+   - Fully mobile-responsive layout with flex/grid where needed
 
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+5. **CTA Buttons**
+   - Hero CTA scrolls to first section  
+   - Optional buttons in sections scroll to relevant sections or open links  
+   - Hover effects and subtle animations for buttons
 
-        .nav-links a:hover {
-            color: #000;
-        }
+6. **Footer**
+   - Minimalist footer with website name, copyright, optional contact links
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-        }
+7. **JavaScript**
+   - Smooth scrolling for all anchor links  
+   - Mobile menu toggle  
+   - Highlight active nav link while scrolling  
+   - Ensure no page reloads or blank screens  
+   - Safe JS placement to avoid DOM errors
 
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #1a1a1a;
-            transition: 0.3s;
-        }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background: white;
-            color: #1a1a1a;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
-            transition: all 0.3s;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255,255,255,0.4);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-
-        .section {
-            margin-bottom: 8rem;
-            scroll-margin-top: 100px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-icon {
-            width: 60px;
-            height: 60px;
-            background: #1a1a1a;
-            color: white;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
-
-        .intro {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .content-grid { grid-template-columns: 1fr; }
-        }
-
-        .card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: #1a1a1a;
-            margin-bottom: 1.2rem;
-        }
-
-        .tips {
-            background: #f8f9fa;
-            border-left: 5px solid #1a1a1a;
-        }
-
-        .tips ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .tips li {
-            padding: 1rem 0 1rem 2rem;
-            position: relative;
-            font-size: 1.1rem;
-        }
-
-        .tips li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #1a1a1a;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .daily-tip {
-            background: #1a1a1a;
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .daily-tip i { font-size: 2rem; }
-
-        .conclusion {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-top: 4px solid #1a1a1a;
-        }
-
-        .section-btn {
-            display: inline-block;
-            background: #1a1a1a;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: all 0.3s;
-        }
-
-        .section-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        /* Footer */
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 2rem;
-                transition: 0.3s;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-            .nav-links.active { left: 0; }
-            .nav-links li { margin: 1rem 0; }
-            nav { padding: 1rem; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <nav>
-            <a href="#home" class="logo">NobleHabits</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#discipline">Discipline</a></li>
-                <li><a href="#early-rising">Early Rising</a></li>
-                <li><a href="#clean-spaces">Clean Spaces</a></li>
-                <li><a href="#daily-goals">Daily Goals</a></li>
-                <li><a href="#good-habits">Good Habits</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div>
-            <h1>Build Noble Habits</h1>
-            <p>Transform your life through discipline, early rising, clean spaces, and consistent daily goals. Small changes, massive results.</p>
-            <a href="#discipline" class="cta-btn">Start Your Journey</a>
-        </div>
-    </section>
-
-    <div class="container">
-        <!-- Discipline -->
-        <section class="section" id="discipline">
-            <h2>
-                <div class="section-icon"><i class="fas fa-dumbbell"></i></div>
-                Discipline in Daily Life
-            </h2>
-            <p class="intro">
-                Discipline isn't perfection—it's showing up when you don't feel like it. 
-                The gap between goals and reality gets filled by consistent action.
-            </p>
-
-            <div class="content-grid">
-                <div class="card">
-                    <h3>Why It Works</h3>
-                    <p>That 5 AM alarm hurts first 30 days. Then? Automatic. You're the person who delivers while others snooze. Discipline compounds.</p>
-                    <h3>Real Examples</h3>
-                    <ul>
-                        <li>Writer: 500 words daily, even uninspired</li>
-                        <li>Athlete: Trains in rain, others quit</li>
-                        <li>Student: 2hrs study nightly, mood irrelevant</li>
-                    </ul>
-                </div>
-                <div class="card tips">
-                    <h3>6 Steps to Build It</h3>
-                    <ul>
-                        <li>Start stupid small (2-min meditation)</li>
-                        <li>5-4-3-2-1 rule → MOVE instantly</li>
-                        <li>Remove temptation (phone → another room)</li>
-                        <li>Never miss twice (reset immediately)</li>
-                        <li>Track wins (checkmarks = momentum)</li>
-                        <li>Celebrate micro-victories</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="daily-tip">
-                <i class="fas fa-lightbulb"></i>
-                <div><strong>Daily Win:</strong> Make bed first thing. 30 seconds → disciplined day.</div>
-            </div>
-
-            <div class="conclusion">
-                Show up consistently → transform permanently. Discipline = future freedom.
-                <a href="#discipline" class="section-btn">Master Discipline</a>
-            </div>
-        </section>
-
-        <!-- Early Rising -->
-        <section class="section" id="early-rising">
-            <h2>
-                <div class="section-icon"><i class="fas fa-sun-rise"></i></div>
-                Waking Up Early
-            </h2>
-            <p class="intro">
-                Own your morning before world demands attention. First hour determines victory or mediocrity.
-            </p>
-
-            <div class="content-grid
+**Output Requirements**
+- All in **one HTML file**: `<style>` in `<head>`, `<script>` at end of `<body>`  
+- Proper `<div>` structure with section IDs matching nav links  
+- Fully functional, tested for desktop and mobile  
+- Clean, professional, polished look, ready to deploy on GitHub Pages
