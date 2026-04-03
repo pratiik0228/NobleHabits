@@ -3,247 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NobleHabits - Master Your Daily Life</title>
+    <title>NobleHabits - Build Discipline, One Habit at a Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.8;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             color: #333;
-            background: #fafafa;
-            padding: 40px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            overflow: hidden;
+
+        /* Header & Navigation */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
-        header {
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            color: white;
-            text-align: center;
-            padding: 80px 40px;
-        }
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-        header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-        }
+
         nav {
-            background: #f8f9fa;
-            padding: 25px;
-            border-bottom: 1px solid #e9ecef;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        nav a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s;
-        }
-        nav a:hover {
-            background: #000;
-            color: white;
-        }
-        section {
-            padding: 80px 60px;
-            border-bottom: 1px solid #f1f3f4;
-        }
-        section:last-child {
-            border-bottom: none;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        h2 {
-            font-size: 2.8rem;
-            color: #000;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-        .section-line {
-            width: 80px;
-            height: 3px;
-            background: #000;
+            max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
-        h3 {
+
+        .logo {
             font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
             color: #333;
-            margin: 40px 0 25px 0;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1a1a1a;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,255,255,0.4);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
             font-weight: 400;
         }
-        p {
-            font-size: 1.15rem;
-            margin-bottom: 25px;
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
-        .tip-box {
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .explanation {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .explanation h3 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .tips {
             background: #f8f9fa;
-            border-left: 5px solid #000;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 0 10px 10px 0;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 5px solid #1a1a1a;
         }
-        ul {
+
+        .tips h3 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .tips ul {
             list-style: none;
             padding-left: 0;
         }
-        ul li {
-            padding: 20px;
-            background: #f8f9fa;
-            margin: 15px 0;
-            border-radius: 10px;
-            border-left: 4px solid #ddd;
+
+        .tips li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
         }
-        ul li strong {
-            color: #000;
-            display: block;
-            margin-bottom: 8px;
+
+        .tips li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
-        .cta {
-            background: #000;
+
+        .daily-tips {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .daily-tips i {
+            font-size: 2rem;
+        }
+
+        .conclusion {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            border-top: 4px solid #1a1a1a;
+        }
+
+        .apply-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .apply-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
             color: white;
             text-align: center;
-            padding: 60px;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
         }
-        .cta h2 {
-            color: white;
-            margin-bottom: 20px;
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .cta-button {
-            background: white;
-            color: #000;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
             cursor: pointer;
-            transition: transform 0.3s;
         }
-        .cta-button:hover {
-            transform: translateY(-3px);
-        }
+
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            section { padding: 60px 30px; }
-            nav ul { gap: 15px; }
-            h2 { font-size: 2.2rem; }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu {
+                display: flex;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER -->
-        <header>
-            <h1>NobleHabits</h1>
-            <p>Small daily changes create massive life transformations. Master discipline, build routines, and live with purpose.</p>
-        </header>
-
-        <!-- NAVIGATION -->
+    <!-- Header & Navigation -->
+    <header class="header">
         <nav>
-            <ul>
+            <a href="#" class="logo">NobleHabits</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#discipline">Discipline</a></li>
-                <li><a href="#waking-up">Early Rising</a></li>
-                <li><a href="#clean">Clean Spaces</a></li>
-                <li><a href="#goals">Daily Goals</a></li>
-                <li><a href="#habits">Good Habits</a></li>
+                <li><a href="#early-rising">Early Rising</a></li>
+                <li><a href="#clean-spaces">Clean Spaces</a></li>
+                <li><a href="#daily-goals">Daily Goals</a></li>
+                <li><a href="#good-habits">Good Habits</a></li>
             </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars" style="font-size: 1.5rem; color: #333;"></i>
+            </div>
         </nav>
+    </header>
 
-        <!-- SECTION 1: DISCIPLINE -->
-        <section id="discipline">
-            <div class="section-header">
-                <h2>Discipline in Daily Life</h2>
-                <div class="section-line"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Build Noble Habits</h1>
+            <p>Transform your life through discipline, early rising, clean spaces, and consistent daily goals. Small changes, massive results.</p>
+            <a href="#discipline" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Discipline Section -->
+        <section class="section" id="discipline">
+            <h2>
+                <div class="section-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                Discipline in Daily Life
+            </h2>
+            <p class="intro">
+                Discipline isn't about being perfect—it's about showing up when you don't feel like it. 
+                It's the bridge between your goals and your reality.
+            </p>
+
+            <div class="content-grid">
+                <div class="explanation">
+                    <h3>Why Discipline Matters</h3>
+                    <p>Think of discipline like a muscle. The more you use it, the stronger it gets. 
+                    That 5 AM alarm? It hurts at first. But after 30 days, it becomes automatic. 
+                    Suddenly you're the person who gets things done while others hit snooze.</p>
+                    
+                    <h3>Real-Life Examples</h3>
+                    <ul style="list-style: disc; padding-left: 1.5rem;">
+                        <li>The writer who writes 500 words daily, even when uninspired</li>
+                        <li>The athlete who trains through rain, while others stay home</li>
+                        <li>The student who studies 2 hours nightly, regardless of mood</li>
+                    </ul>
+                </div>
+
+                <div class="tips">
+                    <h3>Practical Steps to Build Discipline</h3>
+                    <ul>
+                        <li><strong>Start stupid small:</strong> 2-minute meditation, not 30</li>
+                        <li><strong>Use the 5-second rule:</strong> Count 5-4-3-2-1, then move</li>
+                        <li><strong>Remove temptation:</strong> Phone in another room during work</li>
+                        <li><strong>Track daily wins:</strong> Simple checkmarks build momentum</li>
+                        <li><strong>Never miss twice:</strong> One bad day? Fine. Two? Reset immediately</li>
+                        <li><strong>Celebrate small wins:</strong> Feel the dopamine, stay motivated</li>
+                    </ul>
+                </div>
             </div>
 
-            <h3>🎯 Introduction</h3>
-            <p>Discipline isn't about being perfect or never slipping up—it's about showing up consistently, even when you don't feel like it. It's the bridge between the life you have and the life you want, turning good intentions into real results.</p>
-            <p>Most people think discipline means suffering, but it's actually freedom—the ability to choose long-term rewards over short-term pleasures.</p>
-
-            <h3>🧠 Detailed Explanation</h3>
-            <p>Your brain loves instant gratification—social media likes, junk food, Netflix binges—but discipline rewires this system. Every time you choose the harder but better option, you strengthen neural pathways in your prefrontal cortex, making good decisions easier over time.</p>
-            <p>Science shows it takes 18-254 days to form a habit (average 66 days). The key is starting small so you build momentum without overwhelm. Think compound interest: small daily deposits create massive results. Discipline also builds self-trust—when you keep promises to yourself, you start believing in your ability to achieve bigger goals.</p>
-            <p>The magic happens when discipline becomes identity. You don't "try to be disciplined"—you become a disciplined person who naturally makes good choices.</p>
-
-            <div class="tip-box">
-                <strong>💡 Daily Fact:</strong> People with high self-discipline are 42% more likely to achieve their goals (Dominican University study).
+            <div class="daily-tips">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Daily Tip:</strong> Make your bed immediately after waking. 
+                    It's a 30-second win that sets a disciplined tone for your entire day.
+                </div>
             </div>
 
-            <h3>📖 Real-Life Examples</h3>
-            <p><strong>The Student Who Transformed:</strong> Sarah was failing college, scrolling Instagram 4 hours daily. She started with 25-minute study blocks (Pomodoro technique). Three months later: straight A's, scholarship, confidence boost.</p>
-            <p><strong>The Office Worker Who Quit:</strong> Mike hated his job but stayed comfortable. Started waking 30 minutes early to work on coding skills. Six months later: quit for dream developer job making double salary.</p>
-
-            <h3>✅ Step-by-Step Practical Tips</h3>
-            <ul>
-                <li><strong>Start Stupid Small:</strong> Don't aim for 2-hour workouts. Begin with 2 minutes of stretching daily. Success breeds momentum.</li>
-                <li><strong>Use Implementation Intentions:</strong> "When [situation], I will [action]." Example: "When alarm rings, I will drink water and make bed."</li>
-                <li><strong>Track Your Chain:</strong> Mark calendar X for each successful day. Don't break the chain (Jerry Seinfeld method).</li>
-                <li><strong>Design Your Environment:</strong> Remove temptations (phone in another room), prepare successes (gym clothes ready).</li>
-                <li><strong>Reward the Process:</strong> After completing task, enjoy coffee ritual. Link discipline to pleasure.</li>
-                <li><strong>Weekly Review:</strong> Sunday night: What worked? Adjust one thing. Celebrate progress.</li>
-            </ul>
-
-            <h3>✨ Conclusion</h3>
-            <p>Discipline compounds like interest in a bank. Start today with one small win, and watch your life transform over months.</p>
+            <div class="conclusion">
+                Discipline compounds. What feels like sacrifice today becomes your new normal tomorrow.
+                <a href="#" class="apply-button">Apply This Habit Today</a>
+            </div>
         </section>
 
-        <!-- SECTION 2: WAKING UP EARLY -->
-        <section id="waking-up">
-            <div class="section-header">
-                <h2>Waking Up Early</h2>
-                <div class="section-line"></div>
+        <!-- Early Rising Section -->
+        <section class="section" id="early-rising">
+            <h2>
+                <div class="section-icon">
+                    <i class="fas fa-sun-rise"></i>
+                </div>
+                Waking Up Early
+            </h2>
+            <p class="intro">
+                Early rising isn't about waking up at 4 AM. It's about owning your morning 
+                before the world demands your attention.
+            </p>
+
+            <div class="content-grid">
+                <div class="explanation">
+                    <h3>The Power of Morning Ownership</h3>
+                    <p>Your first hour sets the tone for your entire day. While others scroll 
+                    social media, you're already winning. That quiet morning time? Pure gold.</p>
+                    
+                    <h3>Real-Life Examples</h3>
+                    <ul style="list-style: disc; padding-left: 1.5rem;">
+                        <li>Tim Cook (Apple CEO) wakes at 3:45 AM for email and exercise</li>
+                        <li>Dwayne Johnson starts his day at 4 AM with workouts</li>
+                        <li>Most billionaires cite early rising as their #1 habit</li>
+                    </ul>
+                </div>
+
+                <div class="tips">
+                    <h3>Step-by-Step Early Rising System</h3>
+                    <ul>
+                        <li><strong>Shift gradually:</strong> 15 minutes earlier each day</li>
+                        <li><strong>No screens 1hr before bed:</strong> Blue light kills melatonin</li>
+                        <li><strong>Place alarm across room:</strong> Force yourself to get up</li>
+                        <li><strong>Have morning ritual ready:</strong> Coffee, workout, journal</li>
+                        <li><strong>Sunlight immediately:</strong> Open curtains, step outside</li>
+                        <li><strong>Track sunrise streak:</strong> Don't break the chain</li>
+                    </ul>
+                </div>
             </div>
 
-            <h3>🌅 Introduction</h3>
-            <p>Waking up early isn't torture—it's stealing golden hours before the world wakes up and demands your attention. Those quiet morning moments belong to you, for thinking, creating, and setting your day's tone.</p>
-            <p>Early risers don't just get more done—they get better results with less stress.</p>
-
-            <h3>🧠 Detailed Explanation</h3>
-            <p>Your body has a circadian rhythm that peaks focus and energy 1-4 hours after waking. Early rising aligns with natural sunlight, boosting serotonin and regulating sleep hormones. Studies show early risers have better problem-solving, higher optimism, and 25% more daily productivity.</p>
-            <p>Mornings offer unmatched focus—no emails yet, no distractions. This "maker time" lets you do deep work when your brain is freshest. The resistance comes from sleep debt, but gradual adjustment reprograms your internal clock painlessly.</p>
-
-            <div class="tip-box">
-                <strong>💡 Daily Fact:</strong> CEOs of Fortune 500 companies wake up 4.3 hours before their workday (Inc.com study).
+            <div class="daily-tips">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <strong>Pro Fact:</strong> Your willpower is highest in the morning. 
+                    Do your most important work first, not last.
+                </div>
             </div>
 
-            <h3>📖 Real-Life Examples</h3>
-            <p><strong>High School Student Success:</strong> Alex was barely passing, sleeping till 10 AM. Started 6:30 AM routine: study hour, exercise. GPA jumped from 2.1 to 3.8, college acceptances followed.</p>
-            <p><strong>Mom's Morning Miracle:</strong> Lisa felt overwhelmed with kids. 5:45 AM start gave her 90 minutes for yoga, planning, coffee. "I got myself back," she says.</p>
-
-            <h3>✅ Step-by-Step Practical Tips</h3>
-            <ul>
-                <li><strong>Calculate Sleep Math:</strong> 7-8 hours needed. 6 AM wake-up = 10-11 PM bedtime. Track 1 week.</li>
-                <li><strong>Evening Wind-Down:</strong> 9 PM: dim lights, no screens, read fiction 30 minutes.</li>
-                <li><strong>Prep Night Before:</strong> Clothes ready, water by bed, alarm across room.</li>
-                <li><strong>Morning Victory Chain:</strong> Feet hit floor → water → make bed → sunlight.</li>
-                <li><strong>Shift Gradually:</strong> 15 minutes earlier weekly till target time.</li>
-                <li><strong>Morning Ritual:</strong> 60 minutes: move (10 min), grow (read/journal), create (plan day).</li>
-            </ul>
-
-            <h3>✨ Conclusion</h3>
-            <p>Early mornings give you superpowers. Reclaim your time, reclaim your life—one sunrise at a time.</p>
+            <div class="conclusion">
+                Early rising gives you time, energy, and momentum others don't have. 
+                Your future self will thank you.
+                <a href="#" class="apply-button">Wake Up Early Tomorrow</a>
+            </div>
         </section>
 
-        <!-- SECTION 3: KEEPING SURROUNDINGS CLEAN
+        <!-- Clean Spaces Section -->
+        <section class="section" id="clean-spaces">
+            <h2>
+                <div class="section-icon">
+                    <i class="fas fa-broom"></i>
+                </div>
+                Keeping Surroundings Clean
+            </h2>
+            <p class="intro">
+                Your environment shapes your mind. A clean space = clear thinking. 
+                Cluttered desk? Cluttered mind.
+            </p>
+
+            <div class="content-grid">
+                <div class="explanation">
+                    <h3>Why Cleanliness Transforms You</h3>
+                    <p>A clean environment reduces stress by 20% (studies show). 
+                    When your space is organized, your brain stops wasting energy on chaos.</p>
+                    
+                    <h3>Real-Life Examples</h3>
+                    <ul style="list-style: disc; padding-left: 1.5rem;">
+                        <li>Steve Jobs kept his desk minimal for creative clarity</li>
+                        <li>Minimalist homes report 40% less decision fatigue</li>
+                        <li>Clean workspaces boost productivity 15%</li>
+                    </ul>
+                </div>
+
+                <div class="tips">
+                    <h3>Clean Space System</h3>
+                    <ul>
+                        <li><strong>2-minute rule:</strong> If it takes <2 min, do it now</li>
+                        <li><strong>One touch system:</strong> Handle items once</li>
+                        <li><strong>Weekly reset:</strong> 30 min Sunday evening deep clean</li>
+                        <li><strong>Trash bins everywhere:</strong> Remove friction</li>
+                        <li><strong>Vertical storage:</strong> Shelves > floor clutter</li>
+                        <li><strong>Nightly 5-min tidy:</strong> Never go to bed messy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="daily-tips">
+                <i class="fas fa-magic"></i>
+                <div>
+                    <strong>Daily Tip:</strong> Before leaving any room, ask: 
+                    "Did I leave it better than I found it?"
+                </div>
+            </div>
+
+            <div class="conclusion">
+                Clean spaces create calm minds. Your environment is the invisible architect of your success.
+                <a href="#" class="apply-button">Clean One Area Now</a>
+            </div>
+        </section>
+
+        <!-- Daily Goals Section -->
+        <section class="section" id="daily-goals">
+            <h2>
+                <div class="section-icon">
+                    <i class="fas fa-target"></i>
+                </div>
+                Setting Daily Goals
+            </h2>
+            <p class="intro">
+                Vague goals create vague results. Crystal clear daily targets = crystal clear progress.
+            </p>
+
+            <div class="content-grid">
+                <div class="explanation">
+                    <h3>The Goal-Setting Framework</h3
