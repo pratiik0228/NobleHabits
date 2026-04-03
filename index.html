@@ -7,28 +7,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* Reset & Body */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Inter',sans-serif; line-height:1.6; color:#333; background:#f9f9f9; scroll-behavior:smooth; }
+/* ===== Reset ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; line-height:1.6; color:#333; background:#f9f9f9; overflow-x:hidden; }
 
-/* Header */
-header { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:1000; box-shadow:0 2px 20px rgba(0,0,0,0.1); }
+/* ===== Header ===== */
+.header { position: fixed; top:0; width:100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index:1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1);}
 nav { max-width:1200px; margin:0 auto; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
 .logo { font-size:1.8rem; font-weight:700; color:#1a1a1a; text-decoration:none; }
 .nav-links { display:flex; list-style:none; gap:2rem; }
-.nav-links a { color:#333; text-decoration:none; font-weight:500; transition:color 0.3s; }
+.nav-links a { color:#333; text-decoration:none; font-weight:500; transition: color 0.3s; }
 .nav-links a:hover { color:#1a1a1a; }
-.hamburger { display:none; flex-direction:column; cursor:pointer; gap:4px; }
+.hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; }
 .hamburger span { width:25px; height:3px; background:#1a1a1a; transition:0.3s; }
 
-/* Hero */
-.hero { height:100vh; background:linear-gradient(135deg,#1a1a1a 0%,#333 100%); display:flex; align-items:center; justify-content:center; text-align:center; color:white; padding:0 2rem; }
+/* ===== Hero ===== */
+.hero { height:100vh; background: linear-gradient(135deg,#1a1a1a 0%,#333 100%); display:flex; align-items:center; justify-content:center; text-align:center; color:white; padding:0 2rem;}
 .hero-content h1 { font-size:clamp(3rem,8vw,5rem); font-weight:700; margin-bottom:1.5rem; }
 .hero-content p { font-size:1.3rem; max-width:600px; margin:0 auto 3rem; }
 .cta-button { display:inline-block; background:white; color:#1a1a1a; padding:1.2rem 3rem; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.1rem; transition:all 0.3s; box-shadow:0 10px 30px rgba(255,255,255,0.3); }
 .cta-button:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(255,255,255,0.4); }
 
-/* Sections */
+/* ===== Container / Sections ===== */
 .container { max-width:1100px; margin:0 auto; padding:6rem 2rem; }
 .section { margin-bottom:6rem; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 .section.show { opacity:1; transform:translateY(0); }
@@ -36,14 +36,19 @@ nav { max-width:1200px; margin:0 auto; padding:1rem 2rem; display:flex; justify-
 .section-icon { width:60px; height:60px; background:#1a1a1a; color:white; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
 .intro { font-size:1.2rem; color:#666; margin-bottom:2rem; line-height:1.7; }
 .content-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-bottom:2.5rem; }
-@media(max-width:768px){.content-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){ .content-grid{grid-template-columns:1fr;} }
 .card { background:white; padding:2.5rem; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.1); }
 .card h3 { font-size:1.5rem; color:#1a1a1a; margin-bottom:1rem; }
-.tips { background:#f8f9fa; border-left:4px solid #1a1a1a; padding:1rem 1.5rem; margin-bottom:1.5rem; }
+.tips { background:#f8f9fa; border-left:4px solid #1a1a1a; padding:1rem 1.5rem; margin-bottom:2rem; }
 .tips ul { list-style:none; padding-left:0; }
 .tips li { padding:0.8rem 0; position:relative; font-size:1.1rem; }
-.tips li::before { content:"→"; position:absolute; left:0; color:#1a1a1a; font-weight:bold; }
+.tips li::before { content:"→"; position:absolute; left:-1.2rem; color:#1a1a1a; font-weight:bold; }
+
+/* Daily Tip */
 .daily-tip { background:#1a1a1a; color:white; padding:2rem; border-radius:15px; margin:2rem 0; display:flex; align-items:center; gap:1.5rem; }
+.daily-tip i { font-size:2rem; }
+
+/* Conclusion */
 .conclusion { background:white; padding:2rem; border-radius:15px; text-align:center; font-size:1.15rem; font-weight:600; box-shadow:0 10px 30px rgba(0,0,0,0.1); border-top:4px solid #1a1a1a; }
 .section-btn { display:inline-block; background:#1a1a1a; color:white; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:600; margin-top:1rem; transition:all 0.3s; }
 .section-btn:hover { transform:translateY(-2px); box-shadow:0 10px 25px rgba(0,0,0,0.3); }
@@ -63,110 +68,155 @@ nav { max-width:1200px; margin:0 auto; padding:1rem 2rem; display:flex; justify-
 </style>
 </head>
 <body>
-
 <!-- Header -->
-<header>
-    <nav>
-        <a href="#" class="logo">NobleHabits</a>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#discipline">Discipline</a></li>
-            <li><a href="#early-rising">Early Rising</a></li>
-            <li><a href="#clean-spaces">Clean Spaces</a></li>
-            <li><a href="#daily-goals">Daily Goals</a></li>
-            <li><a href="#good-habits">Good Habits</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+<header class="header">
+<nav>
+    <a href="#" class="logo">NobleHabits</a>
+    <ul class="nav-links">
+        <li><a href="#discipline">Discipline</a></li>
+        <li><a href="#early-rising">Early Rising</a></li>
+        <li><a href="#clean-spaces">Clean Spaces</a></li>
+        <li><a href="#daily-goals">Daily Goals</a></li>
+        <li><a href="#good-habits">Good Habits</a></li>
+    </ul>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
 </header>
 
 <!-- Hero -->
-<section class="hero" id="hero">
-    <div class="hero-content">
-        <h1>Build Noble Habits</h1>
-        <p>Transform your life through discipline, early rising, clean spaces, and consistent daily goals. Small changes, massive results.</p>
-        <a href="#discipline" class="cta-button">Start Your Journey</a>
-    </div>
+<section class="hero">
+<div class="hero-content">
+<h1>Build Noble Habits</h1>
+<p>Transform your life through discipline, early rising, clean spaces, and consistent daily goals. Small changes, massive results.</p>
+<a href="#discipline" class="cta-button">Start Your Journey</a>
+</div>
 </section>
 
+<!-- Sections -->
 <div class="container">
 
-<!-- Discipline Section -->
-<section class="section" id="discipline">
-    <h2><div class="section-icon"><i class="fas fa-dumbbell"></i></div>Discipline in Daily Life</h2>
-    <p class="intro">Discipline is the backbone of personal growth. Small consistent actions lead to massive results over time.</p>
-    <div class="content-grid">
-        <div class="card">
-            <h3>Explanation</h3>
-            <p>By planning your day and sticking to routines, you build self-control and efficiency.</p>
-        </div>
-        <div class="card tips">
-            <h3>Practical Tips</h3>
-            <ul>
-                <li>Wake up at the same time daily</li>
-                <li>Set specific goals</li>
-                <li>Track your progress</li>
-                <li>Eliminate distractions</li>
-            </ul>
-        </div>
-    </div>
-    <div class="daily-tip"><i class="fas fa-star"></i>Consistency today leads to success tomorrow!</div>
-    <div class="conclusion">Start small, stay consistent, and watch your habits transform your life.</div>
+<!-- 1. Discipline -->
+<section id="discipline" class="section">
+<h2><div class="section-icon"><i class="fa fa-bolt"></i></div>Discipline in Daily Life</h2>
+<p class="intro">Discipline is the foundation of success. Small routines shape your day, and consistent actions bring massive results over time.</p>
+<div class="content-grid">
+<div class="card"><h3>Example 1</h3><p>Wake up at the same time every day.</p></div>
+<div class="card"><h3>Example 2</h3><p>Stick to a study or work schedule daily.</p></div>
+</div>
+<div class="tips"><ul>
+<li>Set clear goals for each day.</li>
+<li>Break tasks into small steps.</li>
+<li>Reward yourself for completing tasks.</li>
+</ul></div>
+<div class="daily-tip"><i class="fa fa-star"></i><p>Tip: Consistency beats motivation every time.</p></div>
+<div class="conclusion">A disciplined approach makes everything easier and more predictable.</div>
 </section>
 
-<!-- Early Rising Section -->
-<section class="section" id="early-rising">
-    <h2><div class="section-icon"><i class="fas fa-sun"></i></div>Waking Up Early</h2>
-    <p class="intro">Early rising gives you a head start. Morning hours are perfect for focus and growth.</p>
-    <div class="content-grid">
-        <div class="card">
-            <h3>Explanation</h3>
-            <p>Use mornings for exercise, planning, or learning new skills without distractions.</p>
-        </div>
-        <div class="card tips">
-            <h3>Practical Tips</h3>
-            <ul>
-                <li>Sleep early and maintain routine</li>
-                <li>Place alarm away from bed</li>
-                <li>Start with 15 minutes earlier</li>
-                <li>Morning sunlight exposure</li>
-            </ul>
-        </div>
-    </div>
-    <div class="daily-tip"><i class="fas fa-coffee"></i>Early risers enjoy more peaceful mornings!</div>
-    <div class="conclusion>Small steps each morning build lifelong habits."</div>
+<!-- 2. Early Rising -->
+<section id="early-rising" class="section">
+<h2><div class="section-icon"><i class="fa fa-sun"></i></div>Waking Up Early</h2>
+<p class="intro">Early rising gives you a head start. Morning hours are peaceful and productive.</p>
+<div class="content-grid">
+<div class="card"><h3>Example 1</h3><p>Start with waking up 15 minutes earlier each day.</p></div>
+<div class="card"><h3>Example 2</h3><p>Use morning time for exercise or planning your day.</p></div>
+</div>
+<div class="tips"><ul>
+<li>Go to bed at a fixed time.</li>
+<li>Keep your phone away from your bed.</li>
+<li>Expose yourself to sunlight immediately after waking.</li>
+</ul></div>
+<div class="daily-tip"><i class="fa fa-clock"></i><p>Tip: Morning energy sets the tone for the entire day.</p></div>
+<div class="conclusion">Early rising boosts productivity and improves focus.</div>
 </section>
 
-<!-- More sections (Clean Spaces, Daily Goals, Good Habits) follow same structure... -->
+<!-- 3. Clean Spaces -->
+<section id="clean-spaces" class="section">
+<h2><div class="section-icon"><i class="fa fa-broom"></i></div>Keeping Surroundings Clean</h2>
+<p class="intro">A clean environment creates a clear mind and reduces stress. Small habits maintain cleanliness daily.</p>
+<div class="content-grid">
+<div class="card"><h3>Example 1</h3><p>Keep your desk tidy and organized.</p></div>
+<div class="card"><h3>Example 2</h3><p>Make your bed and room daily.</p></div>
+</div>
+<div class="tips"><ul>
+<li>Clean one small area every day.</li>
+<li>Declutter items you don’t use.</li>
+<li>Organize items into categories.</li>
+</ul></div>
+<div class="daily-tip"><i class="fa fa-hand-sparkles"></i><p>Tip: A clean space boosts focus and positivity.</p></div>
+<div class="conclusion">Regular cleaning keeps your mind and surroundings fresh.</div>
+</section>
+
+<!-- 4. Daily Goals -->
+<section id="daily-goals" class="section">
+<h2><div class="section-icon"><i class="fa fa-list-check"></i></div>Setting Daily Goals</h2>
+<p class="intro">Daily goals keep you on track and focused. Planning small tasks leads to big achievements.</p>
+<div class="content-grid">
+<div class="card"><h3>Example 1</h3><p>Write a to-do list each morning.</p></div>
+<div class="card"><h3>Example 2</h3><p>Prioritize 3 key tasks per day.</p></div>
+</div>
+<div class="tips"><ul>
+<li>Check off completed tasks.</li>
+<li>Adjust goals if needed.</li>
+<li>Set realistic targets.</li>
+</ul></div>
+<div class="daily-tip"><i class="fa fa-bullseye"></i><p>Tip: Clear goals create focus and direction.</p></div>
+<div class="conclusion">Daily goals make progress visible and achievable.</div>
+</section>
+
+<!-- 5. Good Habits -->
+<section id="good-habits" class="section">
+<h2><div class="section-icon"><i class="fa fa-thumbs-up"></i></div>Building Good Habits & Manners</h2>
+<p class="intro">Good habits shape character. Small consistent actions improve life quality and relationships.</p>
+<div class="content-grid">
+<div class="card"><h3>Example 1</h3><p>Practice gratitude daily.</p></div>
+<div class="card"><h3>Example 2</h3><p>Be punctual in all tasks.</p></div>
+</div>
+<div class="tips"><ul>
+<li>Replace one bad habit at a time.</li>
+<li>Use reminders for positive habits.</li>
+<li>Reward yourself for progress.</li>
+</ul></div>
+<div class="daily-tip"><i class="fa fa-heart"></i><p>Tip: Good habits compound over time for success.</p></div>
+<div class="conclusion">Positive habits make life smoother, happier, and more productive.</div>
+</section>
 
 </div>
 
 <!-- Footer -->
 <footer class="footer">
-    <p>&copy; 2026 NobleHabits. All rights reserved.</p>
+<p>&copy; 2026 NobleHabits. All rights reserved.</p>
 </footer>
 
+<!-- JS -->
 <script>
-// Hamburger Toggle
+// Hamburger toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+            target.scrollIntoView({ behavior:'smooth' });
+            if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+        }
+    });
 });
 
-// Scroll animations
+// Animate sections on scroll
 const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('show'); }
-    });
-}, { threshold:0.1 });
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('show'); } });
+}, { threshold: 0.15 });
+
 sections.forEach(section => observer.observe(section));
 </script>
-
 </body>
 </html>
